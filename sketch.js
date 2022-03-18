@@ -1,42 +1,30 @@
-let speedX = 0, speedY = 0, speedScale = 1; 
-let canvasX = 1920, canvasY = 969; 
-let ballLocX = 300, ballLocY = 300, ballSize = 100; 
-let ballSpeedX = 13, ballSpeedY = 25; 
-let bgColX = 0, bgColY = 0, bgColZ = 0; 
+
+//draw a spinning teapot
+let teapot;
+
+function preload() {
+  // Load model with normalise parameter set to true
+  teapot = loadModel('assets/big_lion.obj', true);
+}
 
 function setup() {
-  createCanvas(canvasX, canvasY);
+  createCanvas(720, 1250, WEBGL);
 }
 
 function draw() {
-  background(bgColX, bgColY, bgColZ);
-
+  background(255);
+  ambientLight(25)
+  directionalLight(555,555,555,255,75,0); 
+  scale(3); // Scaled to make model fit into canvas
+  rotateX(frameCount * 0);
+  rotateY(frameCount * 0.01);
+  rotate(3.2);
+  
+  translate(0,40,0)
+  specularMaterial(250);
+  shininess(50);
   noStroke(); 
+  
+  model(teapot);
  
-
-if (ballLocX > canvasX || ballLocX < 0){
-  ballSpeedX*= -1; 
-  ballLocX+= ballSpeedX *speedScale; 
-  fill(random(55,255),random(55,255),random(55,255))
-  bgColX =random(55,255); bgColY = random(55,255); bgColZ = random(55,255); 
-}
-else {
-  ballLocX+= ballSpeedX*speedScale; 
-}
-
-if (ballLocY > canvasY || ballLocY < 0){
-  ballSpeedY*= -1; 
-  ballLocY+= ballSpeedY*speedScale; 
-  fill(random(55,255),random(55,255),random(55,255))
-  bgColX =random(55,255); bgColY = random(55,255); bgColZ = random(0,255); 
-  
-}
-else {
-  ballLocY+= ballSpeedY*speedScale; 
-}
-
-circle(ballLocX, ballLocY, ballSize)
-speedScale = map(mouseX, 0, canvasX, 0.2, 4);
-ballSize = map(mouseY, 0, canvasY, 500, 50)
-  
 }
