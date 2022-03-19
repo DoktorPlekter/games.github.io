@@ -1,0 +1,5 @@
+
+function Ball(x, y ) { 
+    
+}
+
