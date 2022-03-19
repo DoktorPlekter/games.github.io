@@ -1,7 +1,4 @@
 
-function preload() {
-
-}
 
 function setup() {
   createCanvas(512, 512);
