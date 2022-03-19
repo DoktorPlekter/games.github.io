@@ -2,7 +2,11 @@
 
 
 function setup() {
-    createCanvas(600, 400);
+
+    let cnv = createCanvas(600, 400);
+
+
+    cnv.position(width/2, height/2);
 }
 
 
