@@ -2,12 +2,12 @@
 
 
 function setup() {
-    canvas(600, 400);
+    createCanvas(600, 400);
 }
 
 
 function draw() {
 
 
-    background(32);
+    background(100, 100, 100);
 }
