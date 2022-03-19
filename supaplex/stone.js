@@ -9,9 +9,8 @@ function Stone(x, y) {
   this.display = function()
   {
   noStroke(); 
-  fill (25,155,55);
-  rectMode(CENTER);
-  rect(x,y,25);
+  fill (75);
+  circle(x,y,25);
   }
   
 
