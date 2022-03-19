@@ -7,7 +7,5 @@ function setup() {
 
 
 function draw() {
-
-
-    background(100, 100, 100);
+    background(25);
 }
