@@ -9,10 +9,10 @@ function Grass(x, y) {
   this.display = function()
   {
   
-  noStroke();
+  stroke(0,0,0,55)
   fill (25,180,55);
   rectMode(CENTER);
-  rect(x,y,24);
+  rect(x+12,y+12,24);
   }
   
 

@@ -1,40 +1,78 @@
 
-var canvasX = 600, canvasY = 600; 
+var canvasX = 576, canvasY = 576; 
+var mapWidth = 24; var mapHeight = 2; 
 
 var Blocks = [];
 var Grasses = [];
-var charmap =['g', 'g', 'g', 'g', 's', 'g', 'g', 'g','g', 's', 's', 'g', 's', 's', 'g', 'g','g', 'g', 'g','g', 's', 's', 'g', 's',]
+var charmap =['g','s','g','g','s','g','g','g','g','s','s','g','s','s','g','g','g','s','g','g','g','g','g','g',
+              'g','g','g','g','s','g','s','g','g','s','s','g','s','s','g','g','s','s','g','g','s','s','g','s',
+              'g','g','g','s','s','s','g','g','g','s','s','g','s','g','s','s','g','g','g','s','s','s','g','s',
+              'g','g','g','g','s','s','g','s','g','g','s','g','s','g','s','s','g','g','g','s','s','s','g','s',
+              'g','g','g','g','s','g','g','g','g','g','s','g','s','g','s','s','s','s','g','s','s','s','g','s',
+              'g','g','g','g','s','g','g','g','g','g','g','s','s','g','g','g','g','g','g','g','s','s','g','s',
+              'g','g','g','s','s','g','g','s','s','s','g','g','g','s','g','s','g','g','g','g','s','s','g','s',
+              'g','g','s','g','s','g','g','g','g','s','s','s','s','s','g','g','g','g','g','g','s','s','s','g',
+              's','s','s','g','s','g','s','g','g','s','s','g','s','s','s','g','g','s','g','g','s','s','s','g',
+              'g','g','g','g','s','g','g','s','s','s','s','s','g','g','g','g','s','s','g','g','s','s','s','s',
+              'g','s','s','s','s','g','g','g','g','s','s','g','s','g','g','s','s','s','g','g','s','g','g','s',
+              'g','g','s','g','s','g','g','g','s','s','s','g','s','s','g','g','s','g','g','g','s','s','s','s',
+              'g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g',
+              'g','g','g','g','s','s','g','s','g','s','s','g','s','s','s','s','g','g','g','s','s','s','g','s',
+              's','s','s','g','s','g','s','g','g','s','s','g','s','s','s','g','g','s','g','g','g','g','g','g',
+              'g','g','g','g','g','g','g','s','s','s','s','s','s','g','g','g','s','g','g','g','s','s','g','s',
+              'g','g','g','s','g','s','g','g','g','s','s','g','s','g','s','s','s','g','g','g','g','g','g','g',
+              'g','g','g','g','g','s','g','s','g','g','g','g','s','g','g','s','g','g','g','s','g','g','g','g',
+              'g','g','g','g','s','g','g','g','g','s','g','g','s','s','s','g','s','s','g','s','g','g','g','g',
+              'g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g',
+              'g','g','g','g','s','s','g','s','g','s','s','g','g','s','g','s','g','g','g','s','s','g','g','s',
+              's','s','s','g','s','g','s','g','g','s','s','g','g','g','g','g','g','s','g','g','s','g','g','g',
+              'g','g','g','g','s','g','g','s','s','s','s','s','s','g','g','g','s','s','g','g','s','s','g','g',
+              'g','g','g','s','s','s','g','g','g','s','s','g','s','s','s','s','s','g','g','s','s','s','g','s',
+  
+
+
+              ]
 var gMap = [];
 var sMap = [];
 
 
 function setup() {
   createCanvas(canvasX, canvasY);
-  
+  var currentVertiRow = 0; 
+  var currentHorizRow = 0; 
+  //populating "Blocks" array based on the charmap array
   charmap.forEach((char, ind = 0) => {
+    
+    if (currentHorizRow === mapWidth)
+    {
+      currentVertiRow++;
+      currentHorizRow = 0; 
+    } else{};
+    
+     
 
-    //populating "Blocks" array based on the charmap array
+    
     switch(char){
-      case 's':  
-        console.log('s was met')
-        var s =  new Stone(ind * 25, 100);
+      case 's':          
+        var s =  new Stone(currentHorizRow*24, currentVertiRow*24);
         Blocks.push(s);
         sMap.push(ind); 
       break;
       case 'g':  
-        console.log('g was met')
-        var g =  new Grass(ind * 25, 100);
+        var g =  new Grass(currentHorizRow*24, currentVertiRow*24);
         Blocks.push(g);
         gMap.push(ind); 
       break;
-      default:
-    }
-    
-
-    
+      default: 
+      break;
+  }  
+  currentHorizRow++;
   })
-  setInterval(updatephys, 150)
-  console.log(sMap.length)
+
+
+  sMap.forEach((nums, ind = 0) => {
+    Blocks[sMap[ind]].init(); 
+  })
 }
 
 
@@ -57,16 +95,3 @@ for (var i = 0; i < charmap.length; i++)
 }
 
 
-
-
-function updatephys(){
- 
-
-  sMap.forEach((nums, ind = 0) => {
-  
-  Blocks[sMap[ind]].physupdate();
-
-  
-})
-
-}
