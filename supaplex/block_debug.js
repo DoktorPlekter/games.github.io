@@ -1,6 +1,6 @@
  
 
-function Grass(x, y, t) {
+function Debugblock(x, y, t) {
 
 
   this.x = x; 
@@ -11,7 +11,7 @@ function Grass(x, y, t) {
 
   this.debug  = function()
   {
-     
+    
     textSize(15);
     fill (255,255,255,155);
     text(t, x*24+2, y*24+15);
@@ -21,19 +21,14 @@ function Grass(x, y, t) {
   this.init = function(){
     
   }
-
+  
   this.display = function()
   {
   
-  stroke(0,0,0,55)
-  fill (25,180,55,155);
+  stroke(255,0,0,155)
+  fill (255,55,155,55);
   rectMode(CENTER);
   rect(x*24+12,y*24+12,24);
-  textSize(7);
-  fill (255,255,255,155);
-  text(x, x*24+2, y*24+15);
-  fill (255,155,155,255);
-  text(y, x*24+13, y*24+15);
 
     if (this.debugShow){
       stroke(255,0,0,155)

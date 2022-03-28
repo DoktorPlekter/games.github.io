@@ -8,22 +8,22 @@ var Blocks = new Array(24);
 var Grasses = [];
 var charmap =['g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g',
               'g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g',
-              'g','g','g','g','g','g','g','g','g','g','s','g','g','g','g','g','g','g','g','g','g','g','g','g',
+              'g','g','g','g','g','g','g','g','g','g','n','g','g','g','g','g','g','g','g','g','g','g','g','g',
               'g','g','p','g','g','g','g','g','g','g','n','g','g','g','g','g','g','g','g','g','g','g','g','g',
-              'g','g','g','g','g','g','g','g','g','g','n','g','g','g','g','g','g','g','g','g','g','g','g','g',
-              'g','g','g','g','g','g','g','g','g','g','n','g','g','s','g','g','g','g','g','g','g','g','g','g',
+              'g','g','g','g','g','g','g','g','g','g','s','g','g','g','g','g','g','g','g','g','g','g','g','g',
+              'g','g','g','g','g','g','g','g','g','g','s','g','g','g','g','g','g','g','g','g','g','g','g','g',
+              'g','g','g','g','g','g','g','g','g','g','s','g','g','n','g','g','g','g','g','g','g','g','g','g',
               'g','g','g','g','g','g','g','g','g','g','n','g','g','n','g','g','g','g','g','g','g','g','g','g',
-              'g','g','g','g','g','g','g','g','g','g','n','g','g','n','g','g','g','g','g','g','g','g','g','g',
+              'g','g','g','g','g','g','g','g','g','g','s','g','g','g','g','g','g','g','g','g','g','g','g','g',
               'g','g','g','g','g','g','g','g','g','g','n','g','g','g','g','g','g','g','g','g','g','g','g','g',
               'g','g','g','g','g','g','g','g','g','g','n','g','g','g','g','g','g','g','g','g','g','g','g','g',
-              'g','g','g','g','g','g','g','g','g','g','n','g','g','g','g','g','g','g','g','g','g','g','g','g',
-              'g','g','g','g','g','g','g','g','g','g','n','g','g','g','g','g','g','g','g','g','g','g','g','g',
-              'g','g','g','g','g','g','g','g','g','g','n','g','g','g','g','g','g','g','g','g','g','g','g','g',
-              'g','g','g','g','g','g','g','g','g','g','n','g','g','g','g','g','g','g','g','g','g','g','g','g',
-              'g','g','g','g','g','g','g','g','g','g','n','g','g','g','g','g','g','g','g','g','g','g','g','g',
-              'g','g','g','g','g','g','g','g','g','g','n','g','g','g','g','g','g','g','g','g','g','g','g','g',
-              'g','g','g','g','g','g','g','g','g','g','n','g','g','g','g','g','g','g','g','g','g','g','g','g',
-              'g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g',
+              'g','g','g','g','g','g','g','g','g','n','s','g','g','g','g','g','g','g','g','g','g','g','g','g',
+              'g','g','g','g','g','g','g','g','g','n','n','n','g','g','g','g','g','g','g','g','g','g','g','g',
+              'g','g','g','g','g','g','g','g','g','n','n','n','g','g','g','g','g','g','g','g','g','g','g','g',
+              'g','g','g','g','g','g','g','g','n','n','n','n','g','g','g','g','g','g','g','g','g','g','g','g',
+              'g','g','g','g','g','g','g','g','n','n','n','n','g','g','g','g','g','g','g','g','g','g','g','g',
+              'g','g','g','g','g','g','g','g','n','n','n','n','g','g','g','g','g','g','g','g','g','g','g','g',
+              'g','g','g','g','g','g','g','g','g','n','g','g','g','g','g','g','g','g','g','g','g','g','g','g',
               'g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g',
               'g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g',
               'g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g',
@@ -59,23 +59,23 @@ function setup() {
     
     switch(char){
       case 'p': 
-      var p =  new PlayChar(currentHorizRow, currentVertiRow);
+      var p =  new PlayChar(currentHorizRow, currentVertiRow, 1);
         playCharRef = p; 
         Blocks[currentVertiRow][currentHorizRow] = p;
         break; 
       case 's':          
-        var s =  new Stone(currentHorizRow, currentVertiRow);
+        var s =  new Stone(currentHorizRow, currentVertiRow, 2);
         Blocks[currentVertiRow][currentHorizRow] = s;
         Blocks[currentVertiRow][currentHorizRow].init(); 
         
       break;
       case 'g':  
-        var g =  new Grass(currentHorizRow, currentVertiRow);
+        var g =  new Grass(currentHorizRow, currentVertiRow, 3);
         Blocks[currentVertiRow][currentHorizRow] = g;
        
       break;
       case 'n': 
-        var n =  new Space(currentHorizRow, currentVertiRow);
+        var n =  new Space(currentHorizRow, currentVertiRow, 4);
         Blocks[currentVertiRow][currentHorizRow] = n;
       break; 
 
@@ -95,7 +95,9 @@ function draw() {
   
 for (var i = 0; i < mapWidth; i++){
   for (var j = 0; j < mapHeight; j++){
-    Blocks[i][j].display();   
+    Blocks[i][j].display(); 
+    Blocks[i][j].debug(); 
+
   }
 } 
 }

@@ -1,10 +1,19 @@
-function PlayChar(x, y) {
+function PlayChar(x, y, t) {
   
     this.x = x; 
     this.y = y; 
+    this.t = t;
 
     var arrayCord = (x,y);
   
+    this.debug  = function()
+    {
+       
+      textSize(15);
+      fill (255,255,255,155);
+      text(t, x*24+2, y*24+15);
+    }
+
     this.init  = function()
     {
       
@@ -16,6 +25,12 @@ function PlayChar(x, y) {
       stroke(0,0,0,55)
       fill (255,55,66);
       circle(x*24+12,y*24+12,24);
+
+      textSize(7);
+     fill (55,255,55,155);
+     //text(x, x*24+2, y*24+15);sd
+     fill (55,55,255,255);
+      //text(y, x*24+13, y*24+15);
       
     }
     
@@ -28,6 +43,7 @@ function PlayChar(x, y) {
     this.moveDown = function()  {
 
       Blocks[y+1][x].eaten(y, x);
+     
     }
     this.moveUp = function() {
 
